@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pokedex</title>
+
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="./fonts/font.css" />
+    <link rel="stylesheet" href="./css/typeColor.css" />
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="./img/pokeballs/round_ball.png"
+    />
+
+    <script src="./script.js"></script>
+  </head>
+  <body onload="fetchPokemonNames()">
+    <!-- Header-Section -->
+    <section class="headerSection">
+      <div class="headerContent">
+        <img src="./img/PokemaxLogo.png" alt="" />
+        <div class="searchField">
+          <input type="text" />
+          <img src="./img/icons/search.svg" alt="" />
+        </div>
+      </div>
+    </section>
+
+    <!-- Pokemon-Stats -->
+    <section class="pokeDialog">
+      <div class="pokemonView">
+        <img src="" alt="" />
+
+        <div>
+          <h2></h2>
+          <p id="id"></p>
+          <div>
+            <div></div>
+            <div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pokemons-Overview -->
+    <section class="pokeCardSection">
+      <div class="pokeCardContent" id="pokeCardContent"></div>
+    </section>
+
+    <div class="MoreButtonSection">
+      <button class="MoreButton">Load More</button>
+    </div>
+
+  </body>
+</html>
