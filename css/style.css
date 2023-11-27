@@ -1,0 +1,375 @@
+body {
+  margin: 0;
+  font-family: "Open Sans", "sans-serif";
+  background-image: url(../img/pokeballs/pokeballs_background.png);
+  background-size: 150px;
+}
+
+.display-none {
+  display: none !important;
+}
+
+.headerSection {
+  background-color: #e41f25;
+  padding: 16px;
+  display: flex;
+  justify-content: center;
+  box-shadow: 10px 10px 8px 10px rgba(0, 0, 0, 0.2);
+  position: fixed;
+  width: 100%;
+  padding: 16px 0 16px 0;
+  z-index: 1;
+}
+
+.headerContent {
+  display: flex;
+  justify-content: space-between;
+  max-width: 1440px;
+  width: 100%;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+.headerSection img {
+  height: 100px;
+}
+
+.searchField {
+  display: flex;
+  align-items: center;
+}
+
+.searchField input {
+  height: 25px;
+  margin-right: 8px;
+}
+
+.searchField img {
+  height: 32px;
+  padding: 8px;
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 100%;
+}
+
+.searchField img:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 100%;
+}
+
+.pokeCardSection {
+  display: flex;
+  justify-content: center;
+  padding-top: 150px;
+}
+
+.pokeCardContent {
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  max-width: 1500px;
+  width: 100%;
+  gap: 16px;
+}
+
+.pokeCard {
+  background-image: url(../img/pokeballs/cardImg.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 350px;
+}
+
+.pokeCard h2 {
+  background-color: black;
+  border-radius: 16px;
+  padding: 8px 24px 8px 24px;
+  text-transform: uppercase;
+}
+
+#PokemonImg {
+  height: 200px;
+}
+
+#PokemonImg:hover {
+  cursor: pointer;
+  transform: scale(1.2);
+}
+
+.pokeTypes {
+  display: flex;
+  gap: 16px;
+}
+
+.typOfPokemon {
+  background-color: #fb6c6c;
+  border-radius: 16px;
+  padding: 8px 24px 8px 24px;
+}
+
+.MoreButtonSection {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 40px 0 80px 0;
+}
+
+.MoreButton {
+  height: 50px;
+  width: 150px;
+  border-radius: 16px;
+  font-size: 16px;
+  background-color: #e41f25;
+  color: white;
+  font-weight: bold;
+}
+
+.MoreButton:hover {
+  background-color: rgb(207, 61, 66);
+  cursor: pointer;
+}
+
+.pokeDialog {
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 999;
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pokemonView {
+  background-color: white;
+  height: 80vh;
+  width: 50vh;
+  border-radius: 24px;
+  margin-left: 16px;
+  margin-right: 16px;
+}
+
+.topCardStats {
+  min-height: 30vh;
+  padding: 24px;
+  background-image: url(../img/pokeballs/backgroundBall.png);
+  background-position: right;
+}
+
+.sortButton {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.sortButton img {
+  padding: 8px;
+  border-radius: 100%;
+  background-color: rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+
+.sortButton div {
+  display: flex;
+  gap: 8px;
+}
+
+.sortButton div img {
+  padding: 8px;
+  border-radius: 100%;
+  background-color: rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+
+.TopCardHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.TopCardHeader h2 {
+  background-color: #e41f25;
+  border-radius: 16px;
+  padding: 8px;
+  color: white;
+  text-transform: uppercase;
+}
+
+.TopCardHeader p {
+  background-color: lightgrey;
+  border-radius: 16px;
+  padding: 8px 16px 8px 16px;
+  color: white;
+}
+
+.PokemonStats {
+  background-color: #e41f25;
+  border-radius: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 45vh;
+}
+
+.PokemonStats img {
+  height: 250px;
+  margin-top: -250px;
+}
+
+.TopCardType {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  color: white;
+}
+
+.statMenu {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 40px;
+  width: 100%;
+  color: white;
+  padding-top: 8px;
+  text-align: center;
+}
+
+.statMenu a {
+  cursor: pointer;
+}
+
+.statMenu h3 {
+  margin: 0;
+}
+
+.MenuPosition {
+  padding: 8px;
+  border-radius: 16px;
+  width: 110px;
+}
+
+.aktiveMenu {
+  background-color: #92bf19;
+  padding: 8px;
+  border-radius: 16px;
+  width: 110px;
+}
+
+#description {
+  background-color: #f5f5f6;
+  margin: 16px;
+  padding: 16px;
+  border-radius: 24px;
+  text-align: center;
+  color: rgba(0, 0, 0, 0.7);
+}
+
+#proportions {
+  width: 70%;
+  color: #f5f5f6;
+  font-size: 20px;
+  height: 200px;
+}
+
+#proportions td:nth-child(1) {
+  width: 270px;
+}
+
+#proportions td:nth-child(2) {
+  text-align: end;
+}
+
+#proportionsContent {
+  margin-top: 30px;
+}
+
+#stats {
+  color: #f5f5f6;
+  font-size: 1.17em;
+  width: 85%;
+  height: 200px;
+}
+
+#stats td:nth-child(1) {
+  width: 150px;
+}
+
+.progressContainer {
+  display: flex;
+  flex-direction: column;
+  margin-top: 30px;
+}
+
+.progressContent {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.emptyProgress {
+  width: 50%;
+  height: 15px;
+  border: 1px solid #f5f5f6;
+  border-radius: 5px;
+  overflow: hidden;
+  background: white;
+}
+
+.progressBar {
+  max-height: 15px;
+  background-color: #92bf19;
+  color: #f5f5f6;
+  line-height: 15px;
+  padding-left: 8px;
+}
+
+@media (max-width: 630px) {
+  .headerContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .headerContent img {
+    height: 80px;
+  }
+
+  .searchField img {
+    height: 40px;
+  }
+
+  .pokeCardSection {
+    padding-top: 200px;
+  }
+}
+
+@media (max-width: 400px) {
+  .statMenu {
+    justify-content: center;
+    gap: 8px;
+  }
+
+  h3{
+    font-size: 16px;
+  }
+
+  .progressContainer {
+    font-size: 16px;
+}
+}
+
+@media (max-width: 340px) {
+    .progressContainer {
+      font-size: 12px;
+  }
+  }
+  

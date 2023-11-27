@@ -5,13 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pokedex</title>
 
-    <link rel="stylesheet" href="./style.css" />
-    <link rel="stylesheet" href="./fonts/font.css" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./css/font.css" />
     <link rel="stylesheet" href="./css/typeColor.css" />
     <link
       rel="icon"
       type="image/x-icon"
-      href="./img/pokeballs/round_ball.png"
+      href="../img/pokeballs/round_ball.png"
     />
 
     <script src="./script.js"></script>
@@ -22,23 +22,47 @@
       <div class="headerContent">
         <img src="./img/PokemaxLogo.png" alt="" />
         <div class="searchField">
-          <input type="text" />
-          <img src="./img/icons/search.svg" alt="" />
+          <form class="searchField" onsubmit="filterPokemon(); return false">
+            <input id="wantedPokemon" type="text" onkeyup="emptyField()" />
+            <a >
+              <img src="./img/pokeballs/alt/pokemon-1536847_1280.png" alt="" />
+            </a>
+          </form>
         </div>
       </div>
     </section>
 
     <!-- Pokemon-Stats -->
-    <section class="pokeDialog">
+    <section id="pokeDialog" class="pokeDialog display-none">
       <div class="pokemonView">
-        <img src="" alt="" />
-
-        <div>
-          <h2></h2>
-          <p id="id"></p>
-          <div>
-            <div></div>
-            <div></div>
+        <div class="topCardStats">
+          <div class="sortButton">
+            <a onclick="closeDialog()"
+              ><img src="./img/icons/close.svg" alt=""
+            /></a>
+            <div>
+              <a id="back" onclick="back()">
+                <img src="./img/icons/arrow_back.svg" alt="" />
+              </a>
+              <a id="forward" onclick="foward()">
+                <img src="./img/icons/arrow_forward.svg" alt="" />
+              </a>
+            </div>
+          </div>
+          <div class="TopCardHeader" id="TopCardHeader">
+            <h2>Bulbasaur</h2>
+            <p>ID</p>
+          </div>
+        </div>
+        <div class="PokemonStats">
+          <img id="StatsPokeIMG" src="" alt="AlternativText" />
+          <div class="TopCardType" id="TopCardType"></div>
+          <div class="statMenu" id="statMenu"></div>
+          <div id="proportions" class="">
+            <table id="proportionsContent"></table>
+          </div>
+          <div id="stats" class="display-none">
+            <div class="progressContainer" id="progressContainer"></div>
           </div>
         </div>
       </div>
@@ -50,8 +74,9 @@
     </section>
 
     <div class="MoreButtonSection">
-      <button class="MoreButton">Load More</button>
+      <button class="MoreButton" onclick="fetchPokemonNames()">
+        Load More
+      </button>
     </div>
-
   </body>
 </html>
