@@ -196,7 +196,7 @@ function aktiveStats(id) {
 }
 
 function backArrawTest() {
-  if (cardID == 0) {
+  if (cardID == 1) {
     document.getElementById("back").classList.add("display-none");
   } else if (cardID > 0) {
     document.getElementById("back").classList.remove("display-none");
