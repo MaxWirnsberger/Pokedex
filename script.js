@@ -57,7 +57,7 @@ function renderPokemonInfo() {
   document.getElementById("pokeCardContent").innerHTML += `
         <div class="pokeCard">
             <h2 id="PokemonName">${currentName}</h2>
-            <a onclick="openDialog(${id})">
+            <a onclick="openDialog(${id + 1})">
                 <img id="PokemonImg" src="${currentIMG}" alt="Pokemon-Image"/>
             </a>
             <div class="pokeTypes" id="pokeTypes${id}"></div>
@@ -88,17 +88,37 @@ function findTypeColor(PokeType) {
 function openDialog(id) {
   cardID = id;
   document.getElementById("pokeDialog").classList.remove("display-none");
+  let pokemon = idFinder(cardID);
   backArrawTest();
   forwardArrawTest();
-  loadPoketHeader(loadedPokemon[cardID]);
-  renderCardType(loadedPokemon[cardID]);
+  loadPoketHeader(pokemon);
+  renderCardType(pokemon);
   createCardNav(cardID);
-  aktiveProportions(loadedPokemon[cardID]);
-  renderPokeProportions(loadedPokemon[cardID]);
+  aktiveProportions(pokemon);
+  renderPokeProportions(pokemon);
 }
 
-function renderCardType(pokemonCard) {
-  let PokeTypes = pokemonCard["types"];
+function idFinder(id){
+  for (let i = 0; i < loadedPokemon.length; i++) {
+    let pokemonID = loadedPokemon[i]['id'];
+    if (id == pokemonID) {
+      return loadedPokemon[i]
+    }
+  }
+}
+
+function loadPoketHeader(pokemonInfo) {
+  let name = pokemonInfo["name"];
+  let id = pokemonInfo["id"];
+  let img = pokemonInfo["img"];
+  document.getElementById("TopCardHeader").innerHTML = `
+    <h2>${name}</h2>
+    <p>${id}</p>`;
+  document.getElementById("StatsPokeIMG").src = img;
+}
+
+function renderCardType(pokemonInfo) {
+  let PokeTypes = pokemonInfo["types"];
   document.getElementById("TopCardType").innerHTML = "";
   for (let y = 0; y < PokeTypes.length; y++) {
     let PokeType = PokeTypes[y]["type"]["name"];
@@ -106,16 +126,6 @@ function renderCardType(pokemonCard) {
     document.getElementById("TopCardType").innerHTML += `
         <div class="typOfPokemon ${typeColor}">${PokeType}</div>`;
   }
-}
-
-function loadPoketHeader(pokemonCard) {
-  let name = pokemonCard["name"];
-  let id = pokemonCard["id"];
-  let img = pokemonCard["img"];
-  document.getElementById("TopCardHeader").innerHTML = `
-    <h2>${name}</h2>
-    <p>${id}</p>`;
-  document.getElementById("StatsPokeIMG").src = img;
 }
 
 function createCardNav(id) {
@@ -258,7 +268,8 @@ function filterPokemon() {
   let wantedPokemon = document.getElementById("wantedPokemon");
   wantedPokemon = wantedPokemon.value.toLowerCase();
   document.getElementById("pokeCardContent").innerHTML = "";
-
+  document.getElementById("PokeButton").innerHTML = ""
+  
   for (let i = 0; i < allPokemon.length; i++) {
     let pokemons = allPokemon[i]["name"];
     if (pokemons.toLowerCase().includes(wantedPokemon)) {
@@ -282,5 +293,9 @@ function emptyEverything() {
   loadedPokemon = [];
   cardID = "";
   urlName = "https://pokeapi.co/api/v2/pokemon/";
+  document.getElementById("PokeButton").innerHTML = `
+  <button class="MoreButton" onclick="fetchPokemonNames()">
+    Load More
+  </button>`
   fetchPokemonNames();
 }
