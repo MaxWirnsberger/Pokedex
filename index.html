@@ -11,7 +11,7 @@
     <link
       rel="icon"
       type="image/x-icon"
-      href="../img/pokeballs/round_ball.png"
+      href="./img/pokeballs/round_ball.png"
     />
 
     <script src="./script.js"></script>
@@ -23,8 +23,8 @@
         <img src="./img/PokemaxLogo.png" alt="" />
         <div class="searchField">
           <form class="searchField" onsubmit="filterPokemon(); return false">
-            <input id="wantedPokemon" type="text" onkeyup="emptyField()" />
-            <a >
+            <input placeholder="search" id="wantedPokemon" type="text" onkeyup="emptyField()" />
+            <a onclick="filterPokemon()">
               <img src="./img/pokeballs/alt/pokemon-1536847_1280.png" alt="" />
             </a>
           </form>

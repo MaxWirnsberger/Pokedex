@@ -45,24 +45,7 @@ async function loadPokemon(name) {
   let url = `https://pokeapi.co/api/v2/pokemon/${name}`;
   let response = await fetch(url);
   currentPokemon = await response.json();
-  safePokemonInList(currentPokemon);
   renderPokemonInfo();
-}
-
-function safePokemonInList(currentPokemon) {
-  let newJson = {
-    name: currentPokemon["name"],
-    id: currentPokemon["id"],
-    img: currentPokemon["sprites"]["other"]["official-artwork"][
-      "front_default"
-    ],
-    types: currentPokemon["types"],
-    hight: currentPokemon["height"],
-    weight: currentPokemon["weight"],
-    baseExperience: currentPokemon["base_experience"],
-    stats: currentPokemon["stats"],
-  };
-  loadedPokemon.push(newJson);
 }
 
 function renderPokemonInfo() {
@@ -84,7 +67,7 @@ function renderPokemonInfo() {
 
 function renderType(id, idPosition) {
   let PokeTypes = currentPokemon["types"];
-  document.getElementById(idPosition + id).innerHTML = ""
+  document.getElementById(idPosition + id).innerHTML = "";
   for (let y = 0; y < PokeTypes.length; y++) {
     let PokeType = PokeTypes[y]["type"]["name"];
     let typeColor = findTypeColor(PokeType);
@@ -244,6 +227,31 @@ async function loadAllPokemon() {
   let response = await fetch(url);
   let responseAsJson = await response.json();
   allPokemon = responseAsJson["results"];
+  for (let i = 0; i < allPokemon.length; i++) {
+    let PokeKey = allPokemon[i];
+    loadAllKeys(PokeKey['name']);
+  }
+}
+
+async function loadAllKeys(name) {
+  let url = `https://pokeapi.co/api/v2/pokemon/${name}`;
+  let response = await fetch(url);
+  let allKeys = await response.json();
+  safePokemonInList(allKeys);
+}
+
+function safePokemonInList(allKeys) {
+  let newJson = {
+    name: allKeys["name"],
+    id: allKeys["id"],
+    img: allKeys["sprites"]["other"]["official-artwork"]["front_default"],
+    types: allKeys["types"],
+    hight: allKeys["height"],
+    weight: allKeys["weight"],
+    baseExperience: allKeys["base_experience"],
+    stats: allKeys["stats"],
+  };
+  loadedPokemon.push(newJson);
 }
 
 function filterPokemon() {
@@ -254,7 +262,6 @@ function filterPokemon() {
   for (let i = 0; i < allPokemon.length; i++) {
     let pokemons = allPokemon[i]["name"];
     if (pokemons.toLowerCase().includes(wantedPokemon)) {
-      console.log(pokemons);
       loadPokemon(pokemons);
     }
   }
@@ -264,8 +271,7 @@ function emptyField() {
   urlName = "https://pokeapi.co/api/v2/pokemon/";
   let wantedPokemon = document.getElementById("wantedPokemon").value;
   if (wantedPokemon.length < 1) {
-    emptyEverything()
-    fetchPokemonNames();
+    emptyEverything();
   }
 }
 
